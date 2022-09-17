@@ -92,6 +92,7 @@ button {
 
 --------------JS--------------
 var numeroSecreto = parseInt(Math.random()*11);
+var contador = 0
 
 function Chutar() {
   var elementoResultado = document.getElementById("resultado")
@@ -101,11 +102,23 @@ function Chutar() {
   if (chute == numeroSecreto) {
     elementoResultado.innerHTML = "Voce acertou"
   } 
-  else if (chute < 0 || chute > 10) 
+  else if (chute < 0 || chute > 10){
     elementoResultado.innerHTML = "Você deve digitar um número de 0 a 10"
+    contador++
+  }
+  
     
   
-  else 
-    elementoResultado.innerHTML = "Errou"
+  else if (chute < numeroSecreto){
+    elementoResultado.innerHTML = "Errou, o número é maior"
+    contador++
+  }
+  else if (chute > numeroSecreto){
+    elementoResultado.innerHTML = "Errou, o número é menor"
+    contador++
+  }
     
+  if (contador == 3 )
+    elementoResultado.innerHTML = "Acabou as suas tentavias, a resposta correta é " + numeroSecreto
 }
+
